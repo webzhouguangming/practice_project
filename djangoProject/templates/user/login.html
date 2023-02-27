@@ -133,7 +133,7 @@
     <div class="login">
         <div class="header">登录</div>
 
-        <form  action="/user/login/" method="post">
+        <form  action={% url 'login' %} method="post">
             <div class="container">
             <input type="text" placeholder="请输入用户名" name="username" id="username">
             <span class="left"></span>
