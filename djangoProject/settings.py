@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'app'))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-e+rnbb=*c9h!-2n#qa8@7^sn6zz8clpxwr6@46f8=$p_#*35jc'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -102,16 +102,7 @@ WSGI_APPLICATION = 'djangoProject.wsgi.application'
 
 
 
-DATABASES = {
-     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'practice',
-        'USER': 'root',
-        'PASSWORD': '147258++',
-        'HOST': '',
-        'PORT': '3306',
-    }
-}
+
 
 
 # Password validation
@@ -154,3 +145,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+from .local_settings import *
