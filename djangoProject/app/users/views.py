@@ -74,7 +74,7 @@ class Login(View):
 
         if username:
             password = request.POST.get("password", "")
-            u=User.objects.filter(username=username).first()
+            u = User.objects.filter(username=username).first()
             if u.password == password:
                 return HttpResponseRedirect('/home_page/home')
 
