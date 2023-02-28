@@ -9,14 +9,14 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+from .local_settings import *
 from pathlib import Path
 import os
 import sys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-#BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR =os.path.dirname(os.path.abspath(__file__))
-#添加导包路径
+# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# 添加导包路径
 sys.path.insert(0, os.path.join(BASE_DIR, 'app'))
 
 
@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -75,8 +75,8 @@ TEMPLATES = [
 
         ],
         # 因jinja2不能直接使⽤context_processor
-# 补充Jinja2模板引擎环境
-# 'environment': 'mangguo_pro.utils.jinja2.environment',
+        # 补充Jinja2模板引擎环境
+        # 'environment': 'mangguo_pro.utils.jinja2.environment',
  },
  },
 
@@ -146,4 +146,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-from .local_settings import *
+
