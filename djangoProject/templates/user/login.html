@@ -127,13 +127,26 @@
             background-color: #61dafb;
             color: #fff;
         }
+        .btn1 {
+            position: absolute;
+            left: 50%;
+            top: 54%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            padding: 5px;
+            width: 52%;
+            margin-top: 80px;
+            background-color: #61dafb;
+            color: #ffb;
+
+        }
     </style>
 </head>
 <body>
     <div class="login">
         <div class="header">登录</div>
 
-        <form  action='{% url 'login' %}' method="post">
+        <form  action='{% url 'users:login' %}' method="post">
             <div class="container">
             <input type="text" placeholder="请输入用户名" name="username" id="username">
             <span class="left"></span>
@@ -150,8 +163,14 @@
         </div>
         <div class="btn">
             <input type="submit" value="登陆"></div>
+            <a href="{% url 'users:forget_password' %}">忘记密码</a>
         </form>
 
+
+
+
     </div>
+
+    <script src="js/login.js"></script>
 </body>
 </html>

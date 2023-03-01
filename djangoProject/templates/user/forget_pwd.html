@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="{% url 'users:forget_password' %}" method="post">
+        请输入手机号:<input type="text" name="phone" >
+        请输入验证码:<input type="text" name="code">
+        <input type="submit" value="提交">
+
+    </form>
+
+</body>
+</html>

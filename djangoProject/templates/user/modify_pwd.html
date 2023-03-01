@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+     <form action="{% url 'users:modify_password' %}" method="post">
+         请输入手机号:<input type="text" name="phone">
+         请输入密码: <input type="password" name="pwd">
+         请再次输入密码: <input type="password" name="re_pwd">
+         <input type="submit" value="提交">
+
+     </form>
+
+</body>
+</html>

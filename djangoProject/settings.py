@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'home'
+    'home',
+    'article'
+
 ]
 
 MIDDLEWARE = [
@@ -59,30 +61,30 @@ ROOT_URLCONF = 'djangoProject.urls'
 
 TEMPLATES = [
 
-    {'BACKEND': 'django.template.backends.jinja2.Jinja2',
-
-'DIRS': [os.path.join(BASE_DIR, 'templates')],
-'APP_DIRS': True,
-'OPTIONS': {
-    'context_processors': [
-        'django.template.context_processors.debug',
-        'django.template.context_processors.request',
-        'django.contrib.auth.context_processors.auth',
-
-        'django.contrib.messages.context_processors.messages',
-
-
-
-        ],
+#     {'BACKEND': 'django.template.backends.jinja2.Jinja2',
+#
+# 'DIRS': [os.path.join(BASE_DIR, 'templates')],
+# 'APP_DIRS': True,
+# 'OPTIONS': {
+#     'context_processors': [
+#         'django.template.context_processors.debug',
+#         'django.template.context_processors.request',
+#         'django.contrib.auth.context_processors.auth',
+#
+#         'django.contrib.messages.context_processors.messages',
+#
+#
+#
+#         ],
         # 因jinja2不能直接使⽤context_processor
         # 补充Jinja2模板引擎环境
         # 'environment': 'mangguo_pro.utils.jinja2.environment',
- },
- },
+ # },
+ # },
 
         {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
