@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 
 from django.shortcuts import render
 
-from .models import ArticlePost,User
+from .models import ArticlePost, User
 from django.views import View
 
 
@@ -46,5 +46,19 @@ def article_detail(request, id):
 
 class Ticket(View):
 
-    def post(self,request):
-        return HttpResponse(content='芜湖~')
+    def post(self, request):
+        title = request.POST.get("title", "")
+        ticket = request.POST.get("ticket", "")
+        t = ArticlePost.objects.filter(title=title).first()
+        t_old = t.ticket
+        t_new = t_old+int(ticket)
+        ArticlePost.objects.filter(id=t.id).update(ticket=t_new)
+        return '成功创建'
+
+
+class VoteShow(View):
+    def get(self,request):
+        articles = ArticlePost.objects.all()
+
+        context = {'articles': articles}
+        return render(request, template_name='articles/vote.html',context=context)

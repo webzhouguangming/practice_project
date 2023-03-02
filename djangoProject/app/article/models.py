@@ -43,3 +43,21 @@ class ArticlePost(models.Model):
     def __str__(self):
         # return self.title 将文章标题返回
         return self.title
+
+
+class Image(models.Model):
+
+    name = models.CharField(max_length=50)
+    url = models.CharField(max_length=255)
+    format = models.CharField(max_length=20, null=True, blank=True)
+    article = models.ForeignKey(ArticlePost, on_delete=models.CASCADE, related_name='image_article')
+
+    class Meta:
+        db_table = 'image'
+        verbose_name = '图片'
+        verbose_name_plural=verbose_name
+
+
+
+
+

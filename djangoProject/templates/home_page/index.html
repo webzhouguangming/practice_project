@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Hive Photo Gallery Grid</title>
+  <link rel="stylesheet" href="F:\djangoProject\djangoProject\templates\home_page\css">
+    {% include 'home_page/home2.html' %}
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- number of rows and minimum number of columns, you can adjust as you please-->
+<!-- image urls, you can replace with your own-->
+<body style="--n-rows: 3; --n-cols: 6">
+  <style>.hex-cell:nth-of-type(5n + 1) { grid-column-start: 2 }</style>
+  <div class="hex-cell"><img src="https://img.php.cn/upload/webpage/000/000/164/63d4e99b5a571989.jpg"/></div>
+  <div class="hex-cell"><img src="https://img.php.cn/upload/webpage/000/000/164/63bd05b0322d5897.jpg"/></div>
+  <div class="hex-cell"><img src="https://img.php.cn/upload/webpage/000/000/164/63bd336652365852.jpg"/></div>
+  <div class="hex-cell"><img src="https://img.php.cn/upload/webpage/000/013/709/59896cc374e7f146.jpg"/></div>
+  <div class="hex-cell"><img src="https://img.php.cn/upload/webpage/000/000/006/5937c82264ceb791.jpg"/></div>
+  <div class="hex-cell"><img src="https://img.php.cn/upload/webpage/000/000/006/59352aa9d9810387.jpg"/></div>
+  <div class="hex-cell"><img src="https://img.php.cn/upload/webpage/000/000/006/593522f209bff396.jpg"/></div>
+</body>
+<!-- partial -->
+
+</body>
+</html>

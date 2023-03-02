@@ -1,23 +1,35 @@
 
-<!-- 定义放置文章标题的div容器 -->
-<div class="container">
+
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Bootstrap5 实例</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    {% include 'home_page/home2.html' %}
+</head>
+<body>
+
+<div class="container mt-5">
     {% for article in articles %}
-    <div class="row mt-2">
-        <!-- 文章内容 -->
-        <div class="col-sm-12">
-            <!-- 卡片容器 -->
-            <div class="card h-100">
-                <!-- 标题 -->
-<!--                <h4 class="card-header">{{ article.title }}</h4>-->
-                <!-- 摘要 -->
-                <div class="card-body">
-                    <h4 class="card-title">{{ article.title }}</h4>
-                    <p class="card-text">{{ article.body|slice:'100' }}...</p>
-                    <a href="{% url 'article:article_detail' article.id %}"  class="card-link">阅读本文</a>
-                </div>
-            </div>
+
+
+
+
+        <div class="card">
+        <h5 class="card-header" style="text-align: center">{{ article.title }}</h5>
+        <div class="card-body">
+        <h5 class="card-title">{{ article.title }}</h5>
+        <p class="card-text">{{ article.body|slice:'100' }}...</p>
+        <a href="{% url 'article:article_detail' article.id %}" class="btn btn-primary">阅读本文</a>
         </div>
-    </div>
-    {% endfor %}
+        </div>
+      {% endfor %}
+
 </div>
+
+</body>
+</html>
 

@@ -1,44 +1,84 @@
-
-<!-- 文章详情 -->
-<div class="container">
-    <div class="row">
-        <!-- 标题及作者 -->
-        <h1 class="col-12 mt-4 mb-4">{{ article.title }}</h1>
-        <div class="col-12 alert alert-primary">
-            <a>作者：{{ article.author }}</a>
-            <a>{{ article.created|date:'Y-m-d H:i:s' }}</a>
-        </div>
-        <!-- 文章正文 -->
-        <div class="col-12">
-            <p>{{ article.body }}</p>
-        </div>
-        <div>
-            <form>
-                <label>请输入投票数量（1-10）票</label>
-                <input type="text" name="ticket">
-                <input type="submit" value="提交">
-
-            </form>
-
-        </div>
-        <h1>XMLHttpRequest 对象</h1>
-
-        <button type="button" onclick="loadDoc()">请求数据</button>
-
-        <p id="demo"></p>
-
-        <script>
-        function loadDoc() {
-          var xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function() {
-            if (this.status == 200) {
-              document.getElementById("demo").innerHTML = this.responseText;
-            }
-          };
-          xhttp.open("POST", "{% url 'article:article_ticket' %}", true);
-          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          xhttp.send("fname=Bill&lname=Gates");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 网页标题 -->
+    <title>光明网</title>
+    {% include 'home_page/home2.html' %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <style>
+    	/* 博客文章信息为灰色 */
+        .post-info {
+            color: gray;
         }
-        </script>
+        .post-info span {
+            margin-right: 15px;  /* 博客文章信息间隔15px */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 文章标题 -->
+        <h1 class="post-title">{{ article.title }}</h1>
+        <p class="post-info">
+            <!-- 文章发布时间 -->
+            <span>{{ article.created|date:'Y-m-d H:i:s' }}</span>
+            <!-- 文章作者 -->
+            <span>作者：<a href="#">{{ article.author.name }}</a></span>
+
+
+        </p>
+        <!-- 文章标签 -->
+        <p class="post-tag">
+            <span class="label label-danger">Python</span>
+            <span class="label label-warning">django</span></span>
+            <span class="label label-info">Python web开发</span>
+        </p>
+
+        <hr>
+        <div class="row">
+            <div class="col-md-8">
+                <!-- 文章内容 -->
+                <div class="content">
+                    {{ article.body }}
+                </div>
+                <hr>
+                <ul class="list-group" style="width: 750px;">
+                    <li class="list-group-item">
+                        <h5>User 1：写得不错！</h5>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>User 2：感谢博主！</h5>
+                    </li>
+                    <li class="list-group-item">
+                        <h5>User 3：希望能看到更多像这样的优质文章！</h5>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h4><b>作者最新文章</b></h4>
+                <ul class="list-group">
+                    <!-- 最新文章列表 -->
+                    <li class="list-group-item">
+                        <a href="{% url 'article:article_detail' 1 %}">python PEP8规范</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'article:article_detail' 2 %}">Django框架</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'article:article_detail' 3 %}">python</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'article:article_detail' 4 %}">PostgreSQL 与 MySQL 相比，优势何在？</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{% url 'article:article_detail' 5 %}">如何优雅的摸鱼</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
+</body>
+</html>

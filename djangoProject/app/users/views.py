@@ -1,5 +1,6 @@
 import time
 
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 
 # Create your views here.
@@ -7,12 +8,20 @@ from django.shortcuts import render
 from django.views import View
 from .models import User
 
-
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 # Create your views here.
 
 import re
 import random
+# 全局类 表示当前哪个用户已经登陆
+
+
+class GlobalUser(object):
+    def __init__(self, queryset):
+        self.q = queryset
+
+    def user_name(self):
+        return self.q.name
 
 
 class Registers(View):
@@ -66,6 +75,7 @@ class Registers(View):
 
 class Login(View):
 
+
     def get(self, request):
         return render(request, template_name='user/login.html')
 
@@ -76,6 +86,7 @@ class Login(View):
             password = request.POST.get("password", "")
             u = User.objects.filter(username=username).first()
             if u.password == password:
+
                 return HttpResponseRedirect('home/')
 
             else:

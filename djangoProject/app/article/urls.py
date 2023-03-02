@@ -12,6 +12,7 @@ urlpatterns = [
     # 文章详情
     path('article-detail/<int:id>/', views.article_detail, name='article_detail'),
     path('article-ticket/', views.Ticket.as_view(), name='article_ticket'),
+    re_path('^vote_show$', views.VoteShow.as_view(), name='vote_show')
 
 
 ]

@@ -13,4 +13,5 @@ urlpatterns = [
     re_path('^user/modify_pwd/$', ModifyPassword.as_view(), name='modify_password'),
 
 
+
 ]

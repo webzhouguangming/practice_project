@@ -12,9 +12,15 @@ class Home(View):
 
     def get(self, request):
 
-        return render(request, template_name="home_page/home.html")
+        return render(request, template_name="home_page/home2.html")
 
 
 class LoginTest(View):
     def get(self, request):
         return render(request, template_name='home_page/test.html')
+
+
+class Index(View):
+
+    def get(self, request):
+        return render(request,template_name="home_page/index.html")
