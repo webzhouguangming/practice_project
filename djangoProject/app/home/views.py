@@ -23,4 +23,9 @@ class LoginTest(View):
 class Index(View):
 
     def get(self, request):
-        return render(request,template_name="home_page/index.html")
+        return render(request, template_name="home_page/index.html")
+
+
+class Test:
+
+    print('测试合并分支')
