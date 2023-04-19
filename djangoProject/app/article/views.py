@@ -57,7 +57,7 @@ class Ticket(View):
 
 
 class VoteShow(View):
-    def get(self,request):
+    def get(self, request):
         articles = ArticlePost.objects.all()
 
         context = {'articles': articles}

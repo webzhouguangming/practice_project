@@ -1,0 +1,40 @@
+
+<!-- 文章详情 -->
+<div class="container">
+    <div class="row">
+        <!-- 标题及作者 -->
+        <h1 class="col-12 mt-4 mb-4">{{ article.title }}</h1>
+        <div class="col-12 alert alert-primary">
+            <a>作者：{{ article.author }}</a>
+            <a>{{ article.created|date:'Y-m-d H:i:s' }}</a>
+        </div>
+        <!-- 文章正文 -->
+        <div class="col-12">
+            <p>{{ article.body }}</p>
+        </div>
+        <div>
+            <form action="{% url 'article:article_ticket' %}" method="post">
+                <label>请输入投票数量（1-10）票</label>
+                <input type="text" name="ticket" >
+                <input type="hidden" name="title" value={{ article.title }}>
+                <input type="submit" value="提交" id="demo1"  onclick="abc()">
+
+                <p id="demo"></p>
+
+            </form>
+
+
+
+<script>
+    function abc(){
+
+
+        document.getElementById('demo').innerHTML='发送成功';
+    }
+
+</script>
+
+
+</div>
+    </div>
+</div>

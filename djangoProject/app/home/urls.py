@@ -2,14 +2,16 @@ from django.contrib.auth.decorators import login_required
 from django.urls import path,include,re_path
 
 
+
 from .views import Home,LoginTest,Index
 
 
 urlpatterns = [
-    # 初次访问首页 需要登陆
-    re_path('^$', login_required(Index.as_view()), name='home'),
+
+    re_path('^$', Index.as_view(), name='home'),
     # 登陆后重定向到首页
     re_path('^user/login/home/$', Index.as_view(), name='home'),
-    re_path('^home/test$', LoginTest.as_view(), name='test')
+    re_path('^home/test$', Index.as_view(), name='test')
+
 
 ]

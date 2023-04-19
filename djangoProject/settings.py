@@ -9,15 +9,23 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-from .local_settings import *
+from djangoProject.local_settings import *
 from pathlib import Path
 import os
 import sys
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 添加导包路径
-sys.path.insert(0, os.path.join(BASE_DIR, 'app'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'djangoProject/app'))
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'Resource/media')
+
+MEDIA_URL = '/media/'
+# 设置富文本编辑器的上传文件的相对路径
+CKEDITOR_UPLOAD_PATH = 'upload/'
+
+CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 
 # Quick-start development settings - unsuitable for production
@@ -43,7 +51,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'home',
-    'article'
+    'article',
+    'blog_article',
+    # 注册django-ckeditor
+    'ckeditor',
+    # 注册富文本编辑器上传功能
+    'ckeditor_uploader'
+
 
 ]
 
@@ -84,7 +98,7 @@ TEMPLATES = [
 
         {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'djangoProject/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,9 +143,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -142,10 +156,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = []
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# 有模型需要继承AbstractUser类需要修改这个配置，配置成自己的模型
+AUTH_USER_MODEL = 'blog_article.ArticleAuthor'
+
+if __name__ == '__main__':
+    print(BASE_DIR)
 

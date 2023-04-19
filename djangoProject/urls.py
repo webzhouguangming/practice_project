@@ -20,6 +20,7 @@ from djangoProject.app.home.views import Home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path('^', include('blog_article.urls')),
     re_path('^', include(('home.urls', 'home'), namespace='home')),
     re_path('^', include(('users.urls', 'users'), namespace='users')),
     re_path('^', include(('article.urls', 'article'), namespace='article'))
