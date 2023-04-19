@@ -24,3 +24,7 @@ class Index(View):
 
     def get(self, request):
         return render(request,template_name="home_page/index.html")
+
+class Test:
+
+    print('另一个分支测试合并分支')
